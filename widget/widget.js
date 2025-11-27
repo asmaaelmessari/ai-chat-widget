@@ -362,6 +362,9 @@
     localStorage.removeItem(HISTORY_KEY);
   }
 
+  // Store selected text before click clears it
+  let lastSelectedText = "";
+
   function getPageContext() {
     const privacyLevel = getPrivacyLevel();
 
@@ -396,7 +399,7 @@
         h1: Array.from(document.querySelectorAll("h1")).map(h => h.innerText.trim()).filter(t => t).slice(0, 3),
         h2: Array.from(document.querySelectorAll("h2")).map(h => h.innerText.trim()).filter(t => t).slice(0, 5),
       },
-      selected_text: window.getSelection()?.toString() || "",
+      selected_text: lastSelectedText || window.getSelection()?.toString() || "",
     };
   }
 
@@ -468,6 +471,11 @@
     const messages = document.getElementById("ai-chat-messages");
     const input = document.getElementById("ai-chat-input");
     const sendBtn = document.getElementById("ai-chat-send");
+
+    // Capture selected text on mousedown (before click clears it)
+    toggle.addEventListener("mousedown", () => {
+      lastSelectedText = window.getSelection()?.toString() || "";
+    });
 
     // Toggle chat
     toggle.onclick = () => {
@@ -574,13 +582,16 @@
       showTyping();
 
       try {
+        const pageContext = getPageContext();
+        lastSelectedText = ""; // Clear after capturing
+
         const response = await fetch(API_URL + "/chat/message", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             session_id: sessionId,
             message: text,
-            page_context: getPageContext(),
+            page_context: pageContext,
           }),
         });
 
