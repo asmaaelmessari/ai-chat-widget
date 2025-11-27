@@ -1,5 +1,7 @@
 # AI Chat Widget
 
+🇷🇺 [Инструкция на русском](README_RU.md)
+
 Drop-in AI chat widget for any website. Works with OpenAI, Claude, Gemini, GigaChat, YandexGPT, Ollama, and any OpenAI-compatible API.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
