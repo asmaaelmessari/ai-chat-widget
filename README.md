@@ -8,6 +8,7 @@ Drop-in AI chat widget for any website. Works with OpenAI, Claude, Gemini, GigaC
 
 ## Features
 
+- **Page Context Awareness** - Bot sees the current page: URL, title, headings, content, selected text
 - **Universal AI Support** - OpenAI, Claude, Gemini, GigaChat, YandexGPT, DeepSeek, Qwen, Ollama, OpenRouter
 - **One-line Integration** - Just add a `<script>` tag
 - **Self-hosted** - Full control over your data
@@ -118,6 +119,23 @@ See `backend/.env.example` for all providers.
 | `data-exclude` | "" | Hide on these pages |
 | `data-private` | "" | Don't collect page content on these pages |
 | `data-no-content` | "" | Collect URL/title only, not content |
+
+### Page Context Awareness
+
+The bot automatically sees the current page context and can answer questions about it:
+
+| Context | Description |
+|---------|-------------|
+| **URL** | Current page URL |
+| **Title** | Page title |
+| **Meta Description** | SEO description |
+| **Headings** | H1, H2 headings structure |
+| **Main Content** | Page text content |
+| **Selected Text** | Text highlighted by user |
+
+**Example:** User is on `/pricing` page and asks "How much does Pro cost?" — the bot sees the pricing page content and gives an accurate answer.
+
+**Example:** User selects text "Enterprise plan" and asks "Tell me more about this" — the bot knows exactly what they're referring to.
 
 ### Privacy Settings
 
